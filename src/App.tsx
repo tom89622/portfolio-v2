@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Github, Mail, ExternalLink, Terminal, Server, Database } from 'lucide-react';
+import { Github, Mail, ExternalLink } from 'lucide-react';
 import './App.css';
+import profilePic from './assets/profile.jpeg';
 
 // --- CONFIGURATION ---
-const GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME';
+const GITHUB_USERNAME = 'tom89622';
 
 // --- TYPES ---
 interface Repo {
@@ -40,22 +41,35 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="app-container">
       {/* HERO SECTION */}
-      <header>
-        <h1>[Your Name]</h1>
-        <p className="role">Duke ECE Master's Student | Systems & Cloud Engineer</p>
-        <p className="bio">
-          Specializing in low-level systems (C++), cloud infrastructure (AWS), and distributed computing.
-          Building scalable solutions with a security-first mindset.
-        </p>
-        <div className="social-links">
-          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" className="btn">
-            <Github size={18} /> GitHub
-          </a>
-          <a href="mailto:your.email@duke.edu" className="btn">
-            <Mail size={18} /> Contact Me
-          </a>
+      <header style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+        <img
+          src={profilePic}
+          alt="Profile"
+          style={{
+            width: '150px',
+            height: '150px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+            border: '4px solid var(--accent-color)'
+          }}
+        />
+        <div>
+          <h1>Jen-Hung Chang</h1>
+          <p className="role">Duke ECE Master's Student | Backend & Cloud Infrastructure Engineer</p>
+          <p className="bio">
+            Specializing in building scalable backend systems, cloud infrastructure (AWS), and distributed computing.
+            Passionate about high-performance computing, fault tolerance, and DevOps automation.
+          </p>
+          <div className="social-links">
+            <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noopener noreferrer" className="btn">
+              <Github size={20} /> GitHub
+            </a>
+            <a href="mailto:jenhung.chang@gmail.com" className="btn">
+              <Mail size={20} /> Contact
+            </a>
+          </div>
         </div>
       </header>
 
@@ -64,25 +78,16 @@ function App() {
         <h2>Technical Stack</h2>
         <div className="grid">
           <div className="card">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <Terminal color="#38bdf8" />
-              <h3>Languages</h3>
-            </div>
-            <p>C++, Python, TypeScript, Bash, C, Rust</p>
+            <h3>Languages</h3>
+            <p>Java, C++, Python, TypeScript, Bash, SQL, Verilog</p>
           </div>
           <div className="card">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <Server color="#38bdf8" />
-              <h3>Systems</h3>
-            </div>
-            <p>Linux Kernel, RDMA, Docker, Kubernetes, OS Internals</p>
+            <h3>Backend & Cloud</h3>
+            <p>Spring Boot, Node.js, Docker, Kubernetes, AWS (Lambda, EC2, S3), CI/CD (GitHub Actions)</p>
           </div>
           <div className="card">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <Database color="#38bdf8" />
-              <h3>Cloud & Data</h3>
-            </div>
-            <p>AWS (EC2, S3, Lambda), Distributed Storage, CI/CD</p>
+            <h3>Systems</h3>
+            <p>Distributed Storage, High-Performance Computing, Linux Kernel, Network Programming</p>
           </div>
         </div>
       </section>
@@ -92,21 +97,31 @@ function App() {
         <h2>Featured Projects</h2>
         <div className="grid">
           <div className="card">
-            <h3>RDMA Subsystem for xv6</h3>
-            <p>Designed a zero-copy networking subsystem for the xv6 research OS, reducing latency by 40% for kernel-bypass workloads.</p>
+            <h3>RDMA Subsystem for xv6-riscv</h3>
+            <p>Engineered a full-stack RDMA subsystem for xv6-riscv, enabling zero-copy user-space I/O and cutting kernel mediation latency by 80%. Implemented Verbs-compatible API and interrupt-safe DMA security.</p>
             <div className="tags">
-              <span className="tag">C++</span>
-              <span className="tag">Operating Systems</span>
-              <span className="tag">Networking</span>
+              <span className="tag">Kernel Networking</span>
+              <span className="tag">RISC-V</span>
+              <span className="tag">Systems Infrastructure</span>
             </div>
           </div>
           <div className="card">
-            <h3>Distributed Write-Back Cache</h3>
-            <p>Implemented a highly consistent write-back cache for remote cloud storage, ensuring data integrity during network partitions.</p>
+            <h3>CollabSpace – Serverless P2P Collaboration Engine</h3>
+            <p>Architected a serverless P2P collaboration infrastructure, reducing backend costs by 95%+. Designed a modular CRDT + Version Vector framework for deterministic convergence.</p>
             <div className="tags">
               <span className="tag">Distributed Systems</span>
+              <span className="tag">WebRTC</span>
+              <span className="tag">CRDT</span>
+            </div>
+          </div>
+          <div className="card">
+            <h3>Lemonaid - AI RAG System</h3>
+            <p>Built an AI-powered RAG system with FastAPI, Gemini API, and PostgreSQL (pgvector), cutting inquiry time from weeks to under an hour. Engineered a multi-environment CI/CD pipeline.</p>
+            <div className="tags">
+              <span className="tag">RAG</span>
+              <span className="tag">LLM</span>
+              <span className="tag">FastAPI</span>
               <span className="tag">AWS</span>
-              <span className="tag">Python</span>
             </div>
           </div>
         </div>
